@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.elsoleclipsado.controller.GameController">
+  <columnConstraints>
+    <ColumnConstraints hgrow="SOMETIMES" maxWidth="342.0" minWidth="10.0" prefWidth="301.0" />
+    <ColumnConstraints hgrow="SOMETIMES" maxWidth="303.0" minWidth="10.0" prefWidth="299.0" />
+  </columnConstraints>
+  <rowConstraints>
+    <RowConstraints minHeight="10.0" prefHeight="40.0" />
+    <RowConstraints maxHeight="271.0" minHeight="10.0" prefHeight="271.0" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="174.0" minHeight="10.0" prefHeight="89.0" vgrow="SOMETIMES" />
+  </rowConstraints>
+   <children>
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #ffbd00;" GridPane.columnSpan="2">
+         <children>
+            <Label alignment="CENTER" text="¡Bienvenido a &quot;El Sol Eclipsado&quot;!">
+               <font>
+                  <Font name="Monospaced Bold" size="24.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+               <HBox.margin>
+                  <Insets left="5.0" />
+               </HBox.margin>
+            </ImageView>
+         </children>
+      </HBox>
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #fff1e1;" GridPane.columnSpan="2" GridPane.rowIndex="2">
+         <children>
+            <Button fx:id="buttonJugar" mnemonicParsing="false" onAction="#Jugar" prefHeight="39.0" prefWidth="92.0" style="-fx-border-color: black; -fx-background-color: #fff684;" text="JUGAR">
+               <HBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </HBox.margin>
+            </Button>
+         </children>
+      </HBox>
+      <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #fff1e1;" GridPane.columnSpan="2" GridPane.rowIndex="1">
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Prepárate para desafiar tus habilidades con el juego de adivinanza de palabras.&#10;Disfruta del desafío y trata de adivinar la palabra secreta antes de que el sol se eclipsa por completo.&#10;&#10;¡Suerte!" textAlignment="CENTER" wrappingWidth="483.9119873046875">
+               <font>
+                  <Font name="Ubuntu Sans Italic" size="22.0" />
+               </font>
+            </Text>
+         </children>
+      </VBox>
+   </children>
+</GridPane>
