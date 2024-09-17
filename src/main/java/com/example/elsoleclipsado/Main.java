@@ -1,6 +1,6 @@
 package com.example.elsoleclipsado;
 
-import com.example.elsoleclipsado.views.GameView;
+import com.example.elsoleclipsado.views.StartView;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import java.io.IOException;
@@ -11,7 +11,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws IOException {
-        GameView.getInstance();
+        StartView.getInstance();
     }
 }
 
