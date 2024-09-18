@@ -3,6 +3,8 @@ package com.example.elsoleclipsado.controller;
 import com.example.elsoleclipsado.views.GameView;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -28,15 +30,14 @@ public class StartController {
             }
             GameView gameView = GameView.getInstance();
             gameView.show();
-
             GameController gameController = gameView.getGameController();
-            if (gameController != null) {
-                gameController.recibirTexto(texto);
-            } else {
-                System.out.println("Error: gameController es null.");
-            }
+            gameController.recibirTexto(texto);
         } else {
-            System.out.println("Palabra inválida o longitud incorrecta.");
+            Alert alert = new Alert(AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText(null);
+            alert.setContentText("La palabra no es válida. Debe tener entre 6 y 12 caracteres y solo contener letras.");
+            alert.showAndWait();
         }
 
 

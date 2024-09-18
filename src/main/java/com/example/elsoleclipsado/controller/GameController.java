@@ -2,7 +2,6 @@ package com.example.elsoleclipsado.controller;
 
 import javafx.fxml.FXML;
 import javafx.scene.text.Text;
-
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
