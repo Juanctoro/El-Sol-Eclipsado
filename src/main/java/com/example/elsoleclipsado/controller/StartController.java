@@ -31,7 +31,7 @@ public class StartController {
             GameView gameView = GameView.getInstance();
             gameView.show();
             GameController gameController = gameView.getGameController();
-            gameController.recibirTexto(texto);
+            gameController.iniciarJuego(texto);
         } else {
             Alert alert = new Alert(AlertType.ERROR);
             alert.setTitle("Error");
