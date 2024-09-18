@@ -29,15 +29,6 @@ public class PalabraSecreta {
         return acertado;
     }
 
-    public void revelarLetra() {
-        for (int i = 0; i < progreso.length; i++) {
-            if (progreso[i] == '_') {
-                progreso[i] = palabra.charAt(i);
-                break;
-            }
-        }
-    }
-
     public Character getLetra(){
         for (int i = 0; i < progreso.length; i++) {
             if (progreso[i] == '_') {

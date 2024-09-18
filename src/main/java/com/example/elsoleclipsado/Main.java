@@ -14,4 +14,3 @@ public class Main extends Application {
         StartView.getInstance();
     }
 }
-

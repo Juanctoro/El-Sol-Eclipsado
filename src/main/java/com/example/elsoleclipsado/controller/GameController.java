@@ -3,52 +3,61 @@ package com.example.elsoleclipsado.controller;
 import com.example.elsoleclipsado.models.Juego;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.text.Text;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class GameController {
 
     @FXML
-    private Text mostrarPalabraOculta;
+    private Label showHiddenWord, showPercentage, labelAttempts, labelHelp;
     @FXML
-    private TextField ingresoDeLetra;
+    private TextField incomeLetter;
     @FXML
-    private Label mostrarPocentaje, labelIntentos, labelAyudas;
+    private ImageView imagePercentagesEclipse;
+    @FXML
+    private Button buttonHelp, buttonVerify;
 
-    private Juego juego;
-    private int fallos = 0;
+    private  String word;
+    private Juego game;
+    private int failures = 0;
 
-    public void iniciarJuego(String palabraSecreta) {
-        this.juego = new Juego(palabraSecreta);
-        mostrarPalabraOculta.setText(juego.obtenerProgreso());
-        labelIntentos.setText(Integer.toString(juego.getIntentosRestantes()));
-        labelAyudas.setText(Integer.toString(juego.getUsosDeAyuda()));
+    public void startGame(String secretWord) {
+        this.word = secretWord;
+        this.game = new Juego(secretWord);
+        showHiddenWord.setText(game.obtenerProgreso());
+        labelAttempts.setText(Integer.toString(game.getIntentosRestantes()));
+        labelHelp.setText(Integer.toString(game.getUsosDeAyuda()));
     }
 
-    public void setIngresoDeLetra() {
-        String letra = ingresoDeLetra.getText();
-        ingresoDeLetra.clear();
-        if(verificarLetraValida(letra) && letra.length() == 1) {
-            boolean esCorrecta = juego.adivinarLetra(letra.charAt(0));
+    public void getLetterInput() {
+        String letter = incomeLetter.getText();
+        incomeLetter.clear();
+        if(verificarLetraValida(letter) && letter.length() == 1) {
+            boolean esCorrecta = game.adivinarLetra(letter.charAt(0));
             if (esCorrecta) {
-                mostrarPalabraOculta.setText(juego.obtenerProgreso());
+                showHiddenWord.setText(game.obtenerProgreso());
+                winGame();
             } else {
-                fallos++;
-                String porcentaje = (fallos*20) + "%";
-                mostrarPocentaje.setText(porcentaje);
-                if(juego.juegoTerminado()){
+                failures++;
+                String porcentaje = (failures*20) + "%";
+                showPercentage.setText(porcentaje);
+                percent();
+                if(game.juegoTerminado()){
                     Alert alert = new Alert(Alert.AlertType.ERROR);
                     alert.setTitle("Error");
                     alert.setHeaderText(null);
-                    alert.setContentText("Perdiste, no te quedan inntentos");
+                    alert.setContentText("Perdiste, el sol se eclipso totalmente");
                     alert.showAndWait();
-                    ingresoDeLetra.setDisable(true);
+                    incomeLetter.setDisable(true);
                 }
             }
-            labelIntentos.setText(Integer.toString(juego.getIntentosRestantes()));
+            labelAttempts.setText(Integer.toString(game.getIntentosRestantes()));
         } else {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
@@ -59,9 +68,10 @@ public class GameController {
     }
 
     public void usoAyudas() {
-        juego.usarAyuda();
-        labelAyudas.setText(Integer.toString(juego.getUsosDeAyuda()));
-        mostrarPalabraOculta.setText(juego.obtenerProgreso());
+        game.usarAyuda();
+        labelHelp.setText(Integer.toString(game.getUsosDeAyuda()));
+        showHiddenWord.setText(game.obtenerProgreso());
+        winGame();
     }
 
     public boolean verificarLetraValida(String palabra) {
@@ -69,5 +79,24 @@ public class GameController {
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(palabra);
         return matcher.matches();
+    }
+
+    public void winGame(){
+        if (Objects.equals(game.obtenerProgreso(), word)) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Ganaste!!!");
+            alert.setHeaderText(null);
+            alert.setContentText("Felicitaciones, lograste adivinar la palabra secreta!!");
+            alert.showAndWait();
+            incomeLetter.setDisable(true);
+            buttonHelp.setDisable(true);
+            buttonVerify.setDisable(true);
+        }
+    }
+
+    public void percent(){
+        int numberImage = failures*20;
+        String imagePath = "/com/example/elsoleclipsado/images/" + numberImage + ".jpg";
+        imagePercentagesEclipse.setImage(new Image(Objects.requireNonNull(getClass().getResourceAsStream(imagePath))));
     }
 }

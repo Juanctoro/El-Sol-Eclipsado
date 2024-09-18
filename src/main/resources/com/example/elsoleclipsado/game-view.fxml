@@ -12,7 +12,6 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
 
 <GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.elsoleclipsado.controller.GameController">
   <columnConstraints>
@@ -63,7 +62,7 @@
                   </VBox>
                   <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
                      <children>
-                        <Label fx:id="labelIntentos" text="0">
+                        <Label fx:id="labelAttempts" text="0">
                            <font>
                               <Font size="16.0" />
                            </font>
@@ -71,7 +70,7 @@
                               <Insets bottom="5.0" />
                            </VBox.margin>
                         </Label>
-                        <Label fx:id="labelAyudas" text="0">
+                        <Label fx:id="labelHelp" text="0">
                            <font>
                               <Font size="16.0" />
                            </font>
@@ -97,13 +96,13 @@
                   <Insets />
                </VBox.margin>
             </Label>
-            <TextField fx:id="ingresoDeLetra" prefHeight="26.0" prefWidth="56.0" />
-            <Button fx:id="buttonVerificar" mnemonicParsing="false" onAction="#setIngresoDeLetra" prefHeight="26.0" prefWidth="123.0" style="-fx-background-color: #9de356; -fx-border-color: black;" text="VERIFICAR">
+            <TextField fx:id="incomeLetter" prefHeight="26.0" prefWidth="56.0" />
+            <Button fx:id="buttonVerify" mnemonicParsing="false" onAction="#getLetterInput" prefHeight="26.0" prefWidth="123.0" style="-fx-background-color: #9de356; -fx-border-color: black;" text="VERIFICAR">
                <font>
                   <Font name="Ubuntu Sans Regular" size="19.0" />
                </font>
             </Button>
-            <Button fx:id="buttonAyuda" mnemonicParsing="false" onAction="#usoAyudas" prefHeight="28.0" prefWidth="63.0" style="-fx-background-color: #9de356; -fx-border-color: black;" text="AYUDA">
+            <Button fx:id="buttonHelp" mnemonicParsing="false" onAction="#usoAyudas" prefHeight="28.0" prefWidth="63.0" style="-fx-background-color: #9de356; -fx-border-color: black;" text="AYUDA">
                <VBox.margin>
                   <Insets />
                </VBox.margin>
@@ -115,47 +114,50 @@
       </VBox>
       <VBox prefHeight="200.0" prefWidth="100.0" style="-fx-border-color: black;" GridPane.columnSpan="2" GridPane.rowIndex="1" GridPane.rowSpan="3">
          <children>
-            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: white;">
                <children>
-                  <Label alignment="CENTER" prefHeight="0.0" prefWidth="246.0" text="SOL ECPLISADO EN UN:" textAlignment="CENTER">
+                  <Label alignment="CENTER" prefHeight="24.0" prefWidth="241.0" text="SOL ECPLISADO EN UN:" textAlignment="CENTER">
                      <font>
-                        <Font name="Monospaced Italic" size="20.0" />
+                        <Font name="Monospaced Italic" size="19.0" />
                      </font>
                   </Label>
-                  <Label fx:id="mostrarPocentaje" alignment="TOP_CENTER" prefHeight="2.0" prefWidth="7.0" text="0%" textAlignment="CENTER">
+                  <Label fx:id="showPercentage" alignment="TOP_CENTER" prefHeight="24.0" prefWidth="47.0" text="0%" textAlignment="CENTER">
                      <font>
-                        <Font name="Monospaced Italic" size="20.0" />
+                        <Font name="Monospaced Italic" size="19.0" />
                      </font>
                   </Label>
                </children>
             </HBox>
             <HBox alignment="CENTER" prefHeight="140.0" prefWidth="306.0" style="-fx-background-color: white;">
                <children>
-                  <ImageView fitHeight="135.0" fitWidth="209.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="imagePercentagesEclipse" fitHeight="214.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@images/star.jpg" />
+                        <Image url="@images/0.jpg" />
                      </image>
                   </ImageView>
                </children>
             </HBox>
             <HBox alignment="CENTER" prefHeight="121.0" prefWidth="306.0" style="-fx-background-color: white;">
                <children>
-                  <VBox alignment="CENTER" prefHeight="118.0" prefWidth="306.0">
+                  <VBox alignment="TOP_CENTER" fillWidth="false" prefHeight="118.0" prefWidth="306.0">
                      <children>
-                        <Label alignment="CENTER" prefHeight="0.0" prefWidth="246.0" text="PALABRA SECRETA:" textAlignment="CENTER">
+                        <Label alignment="CENTER" prefHeight="0.0" prefWidth="246.0" text="PALABRA SECRETA:" textAlignment="CENTER" VBox.vgrow="NEVER">
                            <font>
                               <Font name="Monospaced Italic" size="20.0" />
                            </font>
+                           <VBox.margin>
+                              <Insets top="10.0" />
+                           </VBox.margin>
                         </Label>
-                        <Text fx:id="mostrarPalabraOculta" strokeType="OUTSIDE" strokeWidth="0.0" text="esf">
+                        <Label fx:id="showHiddenWord">
                            <font>
-                              <Font name="Ubuntu Sans Regular" size="26.0" />
+                              <Font name="Monospaced Bold" size="36.0" />
                            </font>
-                        </Text>
+                           <padding>
+                              <Insets bottom="6.0" />
+                           </padding>
+                        </Label>
                      </children>
-                     <padding>
-                        <Insets top="20.0" />
-                     </padding>
                   </VBox>
                </children>
             </HBox>

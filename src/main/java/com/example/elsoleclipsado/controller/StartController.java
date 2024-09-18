@@ -14,24 +14,24 @@ import java.util.regex.Pattern;
 
 public class StartController {
     @FXML
-    private Button buttonJugar;
+    private Button buttonPlay;
 
     @FXML
-    private TextField textFieldPalabraSecreta;
+    private TextField textFieldSecretWord;
 
     @FXML
-    public void Jugar(ActionEvent event) throws IOException {
-        String texto = textFieldPalabraSecreta.getText();
-        if (verificarPalabraValida(texto) && texto.length() >= 6 && texto.length() <= 12) {
+    public void start(ActionEvent event) throws IOException {
+        String text = textFieldSecretWord.getText();
+        if (verifyValidWord(text) && text.length() >= 6 && text.length() <= 12) {
 
-            Stage currentStage = (Stage) buttonJugar.getScene().getWindow();
+            Stage currentStage = (Stage) buttonPlay.getScene().getWindow();
             if (currentStage != null) {
                 currentStage.close();
             }
             GameView gameView = GameView.getInstance();
             gameView.show();
             GameController gameController = gameView.getGameController();
-            gameController.iniciarJuego(texto);
+            gameController.startGame(text);
         } else {
             Alert alert = new Alert(AlertType.ERROR);
             alert.setTitle("Error");
@@ -43,14 +43,14 @@ public class StartController {
 
     }
 
-    public boolean verificarPalabraValida(String palabra) {
+    public boolean verifyValidWord(String palabra) {
         String regex = "^[a-zA-ZáéíóúÁÉÍÓÚñÑ]+$";
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(palabra);
         return matcher.matches();
     }
 
-    public void instrucciones() {
+    public void instructions() {
         Alert alert = new Alert(AlertType.INFORMATION);
         alert.setTitle("Instrucciones");
         alert.setHeaderText(null);
