@@ -3,6 +3,8 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -18,9 +20,10 @@
     <ColumnConstraints hgrow="SOMETIMES" maxWidth="303.0" minWidth="10.0" prefWidth="299.0" />
   </columnConstraints>
   <rowConstraints>
-    <RowConstraints minHeight="10.0" prefHeight="40.0" />
-    <RowConstraints maxHeight="271.0" minHeight="10.0" prefHeight="271.0" vgrow="SOMETIMES" />
-    <RowConstraints maxHeight="174.0" minHeight="10.0" prefHeight="89.0" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="60.0" minHeight="10.0" prefHeight="40.0" />
+    <RowConstraints maxHeight="310.0" minHeight="10.0" prefHeight="171.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="310.0" minHeight="10.0" prefHeight="128.0" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="174.0" minHeight="10.0" prefHeight="98.0" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #ffbd00;" GridPane.columnSpan="2">
@@ -30,14 +33,9 @@
                   <Font name="Monospaced Bold" size="24.0" />
                </font>
             </Label>
-            <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
-               <HBox.margin>
-                  <Insets left="5.0" />
-               </HBox.margin>
-            </ImageView>
          </children>
       </HBox>
-      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #fff1e1;" GridPane.columnSpan="2" GridPane.rowIndex="2">
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #fff1e1;" GridPane.columnSpan="2" GridPane.rowIndex="3">
          <children>
             <Button fx:id="buttonJugar" mnemonicParsing="false" onAction="#Jugar" prefHeight="39.0" prefWidth="92.0" style="-fx-border-color: black; -fx-background-color: #fff684;" text="JUGAR">
                <HBox.margin>
@@ -46,13 +44,32 @@
             </Button>
          </children>
       </HBox>
-      <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #fff1e1;" GridPane.columnSpan="2" GridPane.rowIndex="1">
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #fff1e1;" GridPane.columnSpan="2" GridPane.rowIndex="1">
          <children>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Prepárate para desafiar tus habilidades con el juego de adivinanza de palabras.&#10;Disfruta del desafío y trata de adivinar la palabra secreta antes de que el sol se eclipsa por completo.&#10;&#10;¡Suerte!" textAlignment="CENTER" wrappingWidth="483.9119873046875">
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Prepárate para desafiar tus habilidades con el juego de adivinanza de palabras.&#10;&#10;Disfruta del desafío y trata de adivinar la palabra secreta antes de que el sol se eclipsa por completo.&#10;&#10;¡Suerte!" textAlignment="CENTER" wrappingWidth="429.9119873046875">
                <font>
-                  <Font name="Ubuntu Sans Italic" size="22.0" />
+                  <Font name="Ubuntu Sans Italic" size="18.0" />
                </font>
             </Text>
+            <ImageView fitHeight="150.0" fitWidth="175.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/logo.jpg" />
+               </image>
+            </ImageView>
+         </children>
+      </HBox>
+      <VBox alignment="CENTER" fillWidth="false" prefHeight="200.0" prefWidth="100.0" spacing="10.0" style="-fx-background-color: #fff1e1;" GridPane.columnSpan="2" GridPane.rowIndex="2">
+         <children>
+            <Label text="Ingresa la palabra secreta:">
+               <font>
+                  <Font name="Ubuntu Sans Italic" size="18.0" />
+               </font></Label>
+            <TextField fx:id="textFieldPalabraSecreta" alignment="CENTER" prefHeight="26.0" prefWidth="192.0" />
+            <Label text="*Solo se permiten palbras de 6 a 12 letras, sin espacios*">
+               <font>
+                  <Font name="Ubuntu Sans Italic" size="12.0" />
+               </font>
+            </Label>
          </children>
       </VBox>
    </children>
