@@ -9,21 +9,20 @@ public class PalabraSecreta {
     public PalabraSecreta(String palabra) {
         this.palabra = palabra;
         this.progreso = new char[palabra.length()];
-        Arrays.fill(progreso, '_'); // Inicia con guiones bajos para ocultar las letras
+        Arrays.fill(progreso, '_');
     }
 
 
     public boolean verificarLetra(char letra) {
         boolean acertado = false;
 
-        // Convertimos ambos a minúscula para permitir comparaciones de vocales con/sin acento
         letra = Character.toLowerCase(letra);
 
         for (int i = 0; i < palabra.length(); i++) {
             char letraPalabra = Character.toLowerCase(palabra.charAt(i));
 
             if (letraPalabra == letra || sinAcento(letraPalabra) == letra) {
-                progreso[i] = palabra.charAt(i); // Revela la letra original (incluyendo acentos)
+                progreso[i] = palabra.charAt(i);
                 acertado = true;
             }
         }
@@ -33,14 +32,23 @@ public class PalabraSecreta {
     public void revelarLetra() {
         for (int i = 0; i < progreso.length; i++) {
             if (progreso[i] == '_') {
-                progreso[i] = palabra.charAt(i); // Revelamos la primera letra que no ha sido adivinada
+                progreso[i] = palabra.charAt(i);
                 break;
             }
         }
     }
 
+    public Character getLetra(){
+        for (int i = 0; i < progreso.length; i++) {
+            if (progreso[i] == '_') {
+                return palabra.charAt(i);
+            }
+        }
+        return null;
+    }
+
     public String obtenerProgreso() {
-        return new String(progreso); // Retorna el estado actual de la palabra adivinada
+        return new String(progreso);
     }
 
     private char sinAcento(char c) {

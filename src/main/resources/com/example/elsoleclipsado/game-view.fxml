@@ -16,48 +16,44 @@
 
 <GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.elsoleclipsado.controller.GameController">
   <columnConstraints>
-    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-    <ColumnConstraints hgrow="SOMETIMES" maxWidth="152.0" minWidth="10.0" prefWidth="131.0" />
-      <ColumnConstraints hgrow="SOMETIMES" maxWidth="171.0" minWidth="10.0" prefWidth="147.0" />
+    <ColumnConstraints hgrow="SOMETIMES" maxWidth="157.0" minWidth="10.0" prefWidth="145.0" />
+    <ColumnConstraints hgrow="SOMETIMES" maxWidth="186.0" minWidth="10.0" prefWidth="153.0" />
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="171.0" minWidth="10.0" prefWidth="135.0" />
       <ColumnConstraints hgrow="SOMETIMES" maxWidth="156.0" minWidth="10.0" prefWidth="149.0" />
   </columnConstraints>
   <rowConstraints>
-    <RowConstraints maxHeight="128.0" minHeight="10.0" prefHeight="103.0" vgrow="SOMETIMES" />
-    <RowConstraints maxHeight="175.0" minHeight="10.0" prefHeight="163.0" vgrow="SOMETIMES" />
-    <RowConstraints maxHeight="160.0" minHeight="10.0" prefHeight="125.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="128.0" minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="128.0" minHeight="10.0" prefHeight="94.0" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="179.0" minHeight="10.0" prefHeight="143.0" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="160.0" minHeight="10.0" prefHeight="129.0" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
-      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: black;" GridPane.columnSpan="2" GridPane.rowIndex="1">
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #9de356;" GridPane.columnSpan="4">
          <children>
-            <ImageView fitHeight="167.0" fitWidth="185.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@images/star.jpg" />
-               </image>
-            </ImageView>
-         </children>
-      </HBox>
-      <VBox alignment="CENTER" fillWidth="false" prefHeight="399.0" prefWidth="292.0" spacing="10.0" style="-fx-background-color: black;" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowSpan="3">
-         <children>
-            <Label alignment="TOP_CENTER" text="EL SOL ECLIPSADO" textFill="WHITE">
+            <Label alignment="TOP_CENTER" lineSpacing="3.0" prefHeight="30.0" prefWidth="287.0" text="EL SOL ECLIPSADO">
                <font>
-                  <Font name="System Bold" size="25.0" />
+                  <Font name="Monospaced Bold" size="25.0" />
                </font>
             </Label>
-            <HBox prefHeight="100.0" prefWidth="200.0">
+         </children>
+      </HBox>
+      <VBox alignment="CENTER" fillWidth="false" prefHeight="399.0" prefWidth="292.0" spacing="10.0" style="-fx-background-color: white; -fx-border-color: black;" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="1" GridPane.rowSpan="3">
+         <children>
+            <HBox prefHeight="84.0" prefWidth="200.0">
                <children>
                   <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
                      <children>
-                        <Label text="Intentos:" textFill="WHITE">
+                        <Label text="Intentos:">
                            <font>
-                              <Font size="16.0" />
+                              <Font name="Ubuntu Sans Italic" size="15.0" />
                            </font>
                            <VBox.margin>
                               <Insets bottom="5.0" />
                            </VBox.margin>
                         </Label>
-                        <Label text="Ayudas:" textFill="WHITE">
+                        <Label text="Ayudas:">
                            <font>
-                              <Font size="16.0" />
+                              <Font name="Ubuntu Sans Italic" size="15.0" />
                            </font>
                            <padding>
                               <Insets top="5.0" />
@@ -67,7 +63,7 @@
                   </VBox>
                   <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
                      <children>
-                        <Label fx:id="labelIntentos" text="0" textFill="WHITE">
+                        <Label fx:id="labelIntentos" text="0">
                            <font>
                               <Font size="16.0" />
                            </font>
@@ -75,7 +71,7 @@
                               <Insets bottom="5.0" />
                            </VBox.margin>
                         </Label>
-                        <Label fx:id="labelAyudas" text="0" textFill="WHITE">
+                        <Label fx:id="labelAyudas" text="0">
                            <font>
                               <Font size="16.0" />
                            </font>
@@ -87,52 +83,83 @@
                   </VBox>
                </children>
                <VBox.margin>
-                  <Insets top="25.0" />
+                  <Insets />
                </VBox.margin>
+               <padding>
+                  <Insets bottom="10.0" />
+               </padding>
             </HBox>
-            <Label text="Ingresar letra:" textFill="WHITE">
+            <Label text="Ingresar letra:">
                <font>
-                  <Font size="19.0" />
+                  <Font name="Ubuntu Sans Regular" size="24.0" />
                </font>
-               <VBox.margin>
-                  <Insets top="25.0" />
-               </VBox.margin>
-            </Label>
-            <TextField fx:id="ingresoDeLetra" prefHeight="26.0" prefWidth="56.0" />
-            <Button fx:id="buttonVerificar" mnemonicParsing="false" onAction="#setIngresoDeLetra" style="-fx-background-color: black; -fx-border-color: white; -fx-border-radius: 50;" text="Verificar" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="21.0" />
-               </font>
-            </Button>
-            <Button fx:id="buttonAyuda" mnemonicParsing="false" onAction="#usoAyudas" prefHeight="28.0" prefWidth="59.0" style="-fx-background-color: black; -fx-border-color: white; -fx-border-radius: 50;" text="Ayuda" textFill="#a6a6a6">
                <VBox.margin>
                   <Insets />
                </VBox.margin>
+            </Label>
+            <TextField fx:id="ingresoDeLetra" prefHeight="26.0" prefWidth="56.0" />
+            <Button fx:id="buttonVerificar" mnemonicParsing="false" onAction="#setIngresoDeLetra" prefHeight="26.0" prefWidth="123.0" style="-fx-background-color: #9de356; -fx-border-color: black;" text="VERIFICAR">
+               <font>
+                  <Font name="Ubuntu Sans Regular" size="19.0" />
+               </font>
+            </Button>
+            <Button fx:id="buttonAyuda" mnemonicParsing="false" onAction="#usoAyudas" prefHeight="28.0" prefWidth="63.0" style="-fx-background-color: #9de356; -fx-border-color: black;" text="AYUDA">
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+               <font>
+                  <Font name="Ubuntu Sans Regular" size="13.0" />
+               </font>
             </Button>
          </children>
       </VBox>
-      <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: black;" GridPane.columnSpan="2">
+      <VBox prefHeight="200.0" prefWidth="100.0" style="-fx-border-color: black;" GridPane.columnSpan="2" GridPane.rowIndex="1" GridPane.rowSpan="3">
          <children>
-            <Label alignment="TOP_CENTER" prefHeight="23.0" prefWidth="280.0" text="SOL ECPLISADO EN UN:" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="21.0" />
-               </font>
-            </Label>
-            <Label fx:id="mostrarPocentaje" alignment="TOP_CENTER" prefHeight="23.0" prefWidth="280.0" text="0%" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="25.0" />
-               </font>
-            </Label>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Label alignment="CENTER" prefHeight="0.0" prefWidth="246.0" text="SOL ECPLISADO EN UN:" textAlignment="CENTER">
+                     <font>
+                        <Font name="Monospaced Italic" size="20.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="mostrarPocentaje" alignment="TOP_CENTER" prefHeight="2.0" prefWidth="7.0" text="0%" textAlignment="CENTER">
+                     <font>
+                        <Font name="Monospaced Italic" size="20.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="140.0" prefWidth="306.0" style="-fx-background-color: white;">
+               <children>
+                  <ImageView fitHeight="135.0" fitWidth="209.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/star.jpg" />
+                     </image>
+                  </ImageView>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="121.0" prefWidth="306.0" style="-fx-background-color: white;">
+               <children>
+                  <VBox alignment="CENTER" prefHeight="118.0" prefWidth="306.0">
+                     <children>
+                        <Label alignment="CENTER" prefHeight="0.0" prefWidth="246.0" text="PALABRA SECRETA:" textAlignment="CENTER">
+                           <font>
+                              <Font name="Monospaced Italic" size="20.0" />
+                           </font>
+                        </Label>
+                        <Text fx:id="mostrarPalabraOculta" strokeType="OUTSIDE" strokeWidth="0.0" text="esf">
+                           <font>
+                              <Font name="Ubuntu Sans Regular" size="26.0" />
+                           </font>
+                        </Text>
+                     </children>
+                     <padding>
+                        <Insets top="20.0" />
+                     </padding>
+                  </VBox>
+               </children>
+            </HBox>
          </children>
       </VBox>
-      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: black;" GridPane.columnSpan="2" GridPane.rowIndex="2">
-         <children>
-            <Text fx:id="mostrarPalabraOculta" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0">
-               <font>
-                  <Font name="System Bold" size="31.0" />
-               </font>
-            </Text>
-         </children>
-      </HBox>
    </children>
 </GridPane>

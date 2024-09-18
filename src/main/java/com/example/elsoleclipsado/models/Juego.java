@@ -1,7 +1,7 @@
 package com.example.elsoleclipsado.models;
 
 public class Juego {
-    private PalabraSecreta palabraSecreta;
+    private final PalabraSecreta palabraSecreta;
     private int intentosRestantes;
     private int usosDeAyuda;
     private boolean juegoTerminado;
@@ -32,7 +32,7 @@ public class Juego {
 
     public boolean usarAyuda() {
         if (usosDeAyuda > 0) {
-            palabraSecreta.revelarLetra();
+            palabraSecreta.verificarLetra(palabraSecreta.getLetra());
             usosDeAyuda--;
             return true;
         }

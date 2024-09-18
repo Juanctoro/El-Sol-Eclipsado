@@ -49,4 +49,18 @@ public class StartController {
         Matcher matcher = pattern.matcher(palabra);
         return matcher.matches();
     }
+
+    public void instrucciones() {
+        Alert alert = new Alert(AlertType.INFORMATION);
+        alert.setTitle("Instrucciones");
+        alert.setHeaderText(null);
+        alert.setContentText("Aquí te dejo una breve explicación de cómo jugar:\n" +
+                "\n" +
+                "1. Ingreso de la palabra secreta: Ingresa una palabra de 6 a 12 letras que el jugador debe adivinar.\n" +
+                "2. Adivina la palabra: El jugador tiene 5 intentos para adivinar la palabra letra por letra. Cada vez que falla, el sol se eclipsa un 20%.\n" +
+                "3. Opción de ayuda: Puedes utilizar la opción de ayuda hasta 3 veces, revelando una letra correcta.\n" +
+                "4. Ganancia o pérdida: Si adivinas la palabra antes de que el sol se eclipse por completo, ganas. Si no, pierdes.\n" +
+                "\n¡Intenta adivinar la palabra antes de que el sol desaparezca completamente!.");
+        alert.showAndWait();
+    }
 }
