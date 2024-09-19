@@ -102,7 +102,7 @@
                   <Font name="Ubuntu Sans Regular" size="19.0" />
                </font>
             </Button>
-            <Button fx:id="buttonHelp" mnemonicParsing="false" onAction="#usoAyudas" prefHeight="28.0" prefWidth="63.0" style="-fx-background-color: #9de356; -fx-border-color: black;" text="AYUDA">
+            <Button fx:id="buttonHelp" mnemonicParsing="false" onAction="#useHelps" prefHeight="28.0" prefWidth="63.0" style="-fx-background-color: #9de356; -fx-border-color: black;" text="AYUDA">
                <VBox.margin>
                   <Insets />
                </VBox.margin>

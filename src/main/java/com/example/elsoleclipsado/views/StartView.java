@@ -1,6 +1,5 @@
 package com.example.elsoleclipsado.views;
 
-import com.example.elsoleclipsado.controller.StartController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -14,7 +13,6 @@ public class StartView extends Stage {
                 getClass().getResource("/com/example/elsoleclipsado/fxml/start-view.fxml")
         );
         Parent root = loader.load();
-        StartController startController = loader.getController();
         this.setTitle("El sol eclipsado - Start");
         Scene scene = new Scene(root);
         this.setScene(scene);

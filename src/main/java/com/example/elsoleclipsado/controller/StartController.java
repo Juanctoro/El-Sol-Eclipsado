@@ -1,7 +1,6 @@
 package com.example.elsoleclipsado.controller;
 
 import com.example.elsoleclipsado.views.GameView;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
@@ -20,7 +19,7 @@ public class StartController {
     private TextField textFieldSecretWord;
 
     @FXML
-    public void start(ActionEvent event) throws IOException {
+    public void start() throws IOException {
         String text = textFieldSecretWord.getText();
         if (verifyValidWord(text) && text.length() >= 6 && text.length() <= 12) {
             Stage currentStage = (Stage) buttonPlay.getScene().getWindow();
@@ -51,13 +50,15 @@ public class StartController {
         Alert alert = new Alert(AlertType.INFORMATION);
         alert.setTitle("Instrucciones");
         alert.setHeaderText(null);
-        alert.setContentText("Aquí te dejo una breve explicación de cómo jugar:\n" +
-                "\n" +
-                "1. Ingreso de la palabra secreta: Ingresa una palabra de 6 a 12 letras que el jugador debe adivinar.\n" +
-                "2. Adivina la palabra: El jugador tiene 5 intentos para adivinar la palabra letra por letra. Cada vez que falla, el sol se eclipsa un 20%.\n" +
-                "3. Opción de ayuda: Puedes utilizar la opción de ayuda hasta 3 veces, revelando una letra correcta.\n" +
-                "4. Ganancia o pérdida: Si adivinas la palabra antes de que el sol se eclipse por completo, ganas. Si no, pierdes.\n" +
-                "\n¡Intenta adivinar la palabra antes de que el sol desaparezca completamente!.");
+        alert.setContentText("""
+                Aquí te dejo una breve explicación de cómo jugar:
+                
+                1. Ingreso de la palabra secreta: Ingresa una palabra de 6 a 12 letras que el jugador debe adivinar.
+                2. Adivina la palabra: El jugador tiene 5 intentos para adivinar la palabra letra por letra. Cada vez que falla, el sol se eclipsa un 20%.
+                3. Opción de ayuda: Puedes utilizar la opción de ayuda hasta 3 veces, revelando una letra correcta.
+                4. Ganancia o pérdida: Si adivinas la palabra antes de que el sol se eclipse por completo, ganas. Si no, pierdes.
+                
+                ¡Intenta adivinar la palabra antes de que el sol desaparezca completamente!.""");
         alert.showAndWait();
     }
 }

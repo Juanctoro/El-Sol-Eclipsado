@@ -1,6 +1,6 @@
 package com.example.elsoleclipsado.controller;
 
-import com.example.elsoleclipsado.models.Juego;
+import com.example.elsoleclipsado.models.Game;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -24,31 +24,31 @@ public class GameController {
     private Button buttonHelp, buttonVerify;
 
     private  String word;
-    private Juego game;
+    private Game game;
     private int failures = 0;
 
     public void startGame(String secretWord) {
         this.word = secretWord;
-        this.game = new Juego(secretWord);
-        showHiddenWord.setText(game.obtenerProgreso());
-        labelAttempts.setText(Integer.toString(game.getIntentosRestantes()));
-        labelHelp.setText(Integer.toString(game.getUsosDeAyuda()));
+        this.game = new Game(secretWord);
+        showHiddenWord.setText(game.getProgress());
+        labelAttempts.setText(Integer.toString(game.getRemainingAttempts()));
+        labelHelp.setText(Integer.toString(game.getHelpUses()));
     }
 
     public void getLetterInput() {
         String letter = incomeLetter.getText();
         incomeLetter.clear();
-        if(verificarLetraValida(letter) && letter.length() == 1) {
-            boolean esCorrecta = game.adivinarLetra(letter.charAt(0));
-            if (esCorrecta) {
-                showHiddenWord.setText(game.obtenerProgreso());
+        if(verifyValidLetter(letter) && letter.length() == 1) {
+            boolean isCorrect = game.guessLetter(letter.charAt(0));
+            if (isCorrect) {
+                showHiddenWord.setText(game.getProgress());
                 winGame();
             } else {
                 failures++;
-                String porcentaje = (failures*20) + "%";
-                showPercentage.setText(porcentaje);
+                String percentage = (failures*20) + "%";
+                showPercentage.setText(percentage);
                 percent();
-                if(game.juegoTerminado()){
+                if(game.gameFinished()){
                     Alert alert = new Alert(Alert.AlertType.ERROR);
                     alert.setTitle("Error");
                     alert.setHeaderText(null);
@@ -59,7 +59,7 @@ public class GameController {
                     buttonVerify.setDisable(true);
                 }
             }
-            labelAttempts.setText(Integer.toString(game.getIntentosRestantes()));
+            labelAttempts.setText(Integer.toString(game.getRemainingAttempts()));
         } else {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
@@ -69,22 +69,22 @@ public class GameController {
         }
     }
 
-    public void usoAyudas() {
-        game.usarAyuda();
-        labelHelp.setText(Integer.toString(game.getUsosDeAyuda()));
-        showHiddenWord.setText(game.obtenerProgreso());
+    public void useHelps() {
+        game.useHelp();
+        labelHelp.setText(Integer.toString(game.getHelpUses()));
+        showHiddenWord.setText(game.getProgress());
         winGame();
     }
 
-    public boolean verificarLetraValida(String palabra) {
+    public boolean verifyValidLetter(String word) {
         String regex = "^[a-zA-ZáéíóúÁÉÍÓÚñÑ]+$";
         Pattern pattern = Pattern.compile(regex);
-        Matcher matcher = pattern.matcher(palabra);
+        Matcher matcher = pattern.matcher(word);
         return matcher.matches();
     }
 
     public void winGame(){
-        if (Objects.equals(game.obtenerProgreso(), word)) {
+        if (Objects.equals(game.getProgress(), word)) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Ganaste!!!");
             alert.setHeaderText(null);
