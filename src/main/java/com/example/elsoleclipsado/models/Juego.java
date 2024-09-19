@@ -13,7 +13,6 @@ public class Juego {
         this.juegoTerminado = false;
     }
 
-
     public boolean adivinarLetra(char letra) {
         if (juegoTerminado) {
             return false; // El juego ha terminado
@@ -26,7 +25,6 @@ public class Juego {
                 juegoTerminado = true;
             }
         }
-
         return esCorrecta;
     }
 

@@ -12,7 +12,6 @@ public class PalabraSecreta {
         Arrays.fill(progreso, '_');
     }
 
-
     public boolean verificarLetra(char letra) {
         boolean acertado = false;
 

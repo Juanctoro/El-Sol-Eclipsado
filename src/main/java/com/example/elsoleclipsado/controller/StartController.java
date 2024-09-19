@@ -23,7 +23,6 @@ public class StartController {
     public void start(ActionEvent event) throws IOException {
         String text = textFieldSecretWord.getText();
         if (verifyValidWord(text) && text.length() >= 6 && text.length() <= 12) {
-
             Stage currentStage = (Stage) buttonPlay.getScene().getWindow();
             if (currentStage != null) {
                 currentStage.close();
@@ -39,8 +38,6 @@ public class StartController {
             alert.setContentText("La palabra no es válida. Debe tener entre 6 y 12 caracteres y solo contener letras.");
             alert.showAndWait();
         }
-
-
     }
 
     public boolean verifyValidWord(String palabra) {

@@ -55,6 +55,8 @@ public class GameController {
                     alert.setContentText("Perdiste, el sol se eclipso totalmente");
                     alert.showAndWait();
                     incomeLetter.setDisable(true);
+                    buttonHelp.setDisable(true);
+                    buttonVerify.setDisable(true);
                 }
             }
             labelAttempts.setText(Integer.toString(game.getIntentosRestantes()));
