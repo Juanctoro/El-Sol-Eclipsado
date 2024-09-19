@@ -132,7 +132,7 @@
                <children>
                   <ImageView fx:id="imagePercentagesEclipse" fitHeight="214.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@images/0.jpg" />
+                        <Image url="@../images/0.jpg" />
                      </image>
                   </ImageView>
                </children>

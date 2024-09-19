@@ -1,6 +1,8 @@
 package com.example.elsoleclipsado.models;
 
-public class Juego {
+import com.example.elsoleclipsado.interfaces.IJuego;
+
+public class Juego implements IJuego {
     private final PalabraSecreta palabraSecreta;
     private int intentosRestantes;
     private int usosDeAyuda;
@@ -8,14 +10,14 @@ public class Juego {
 
     public Juego(String palabraSecreta) {
         this.palabraSecreta = new PalabraSecreta(palabraSecreta);
-        this.intentosRestantes = 5; // Máximo de cinco intentos
-        this.usosDeAyuda = 3; // Tres ayudas permitidas
+        this.intentosRestantes = 5;
+        this.usosDeAyuda = 3;
         this.juegoTerminado = false;
     }
-
+    @Override
     public boolean adivinarLetra(char letra) {
         if (juegoTerminado) {
-            return false; // El juego ha terminado
+            return false;
         }
 
         boolean esCorrecta = palabraSecreta.verificarLetra(letra);
@@ -28,27 +30,30 @@ public class Juego {
         return esCorrecta;
     }
 
-    public boolean usarAyuda() {
+    @Override
+    public void usarAyuda() {
         if (usosDeAyuda > 0) {
             palabraSecreta.verificarLetra(palabraSecreta.getLetra());
             usosDeAyuda--;
-            return true;
         }
-        return false; // No quedan ayudas
     }
 
+    @Override
     public boolean juegoTerminado() {
         return juegoTerminado;
     }
 
+    @Override
     public int getIntentosRestantes() {
         return intentosRestantes;
     }
 
+    @Override
     public int getUsosDeAyuda() {
         return usosDeAyuda;
     }
 
+    @Override
     public String obtenerProgreso() {
         return palabraSecreta.obtenerProgreso();
     }

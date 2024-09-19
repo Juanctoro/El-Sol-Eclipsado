@@ -1,8 +1,11 @@
 package com.example.elsoleclipsado.models;
 
+import com.example.elsoleclipsado.interfaces.IPalabraSecreta;
+
 import java.util.Arrays;
 
-public class PalabraSecreta {
+
+public class PalabraSecreta implements IPalabraSecreta {
     private final String palabra;
     private final char[] progreso;
 
@@ -12,6 +15,7 @@ public class PalabraSecreta {
         Arrays.fill(progreso, '_');
     }
 
+    @Override
     public boolean verificarLetra(char letra) {
         boolean acertado = false;
 
@@ -20,7 +24,7 @@ public class PalabraSecreta {
         for (int i = 0; i < palabra.length(); i++) {
             char letraPalabra = Character.toLowerCase(palabra.charAt(i));
 
-            if (letraPalabra == letra || sinAcento(letraPalabra) == letra) {
+            if (letraPalabra == letra || sinAcento(letraPalabra) == letra || letra == conAcento(letraPalabra)) {
                 progreso[i] = palabra.charAt(i);
                 acertado = true;
             }
@@ -28,6 +32,7 @@ public class PalabraSecreta {
         return acertado;
     }
 
+    @Override
     public Character getLetra(){
         for (int i = 0; i < progreso.length; i++) {
             if (progreso[i] == '_') {
@@ -37,6 +42,7 @@ public class PalabraSecreta {
         return null;
     }
 
+    @Override
     public String obtenerProgreso() {
         return new String(progreso);
     }
@@ -48,7 +54,19 @@ public class PalabraSecreta {
             case 'í', 'Í' -> 'i';
             case 'ó', 'Ó' -> 'o';
             case 'ú', 'Ú' -> 'u';
-            default -> c;
+            default -> (c);
+        };
+    }
+
+    private char conAcento(char c) {
+        return switch (c) {
+            case 'a', 'A' -> 'á';
+            case 'e', 'E' -> 'é';
+            case 'i', 'I' -> 'í';
+            case 'o', 'O' -> 'ó';
+            case 'u', 'U' -> 'ú';
+            case 'ñ', 'Ñ' -> 'ñ';
+            default -> (c);
         };
     }
 }

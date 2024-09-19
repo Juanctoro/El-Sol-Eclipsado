@@ -11,7 +11,7 @@ import java.io.IOException;
 public class StartView extends Stage {
     public StartView() throws IOException {
         FXMLLoader loader = new FXMLLoader(
-                getClass().getResource("/com/example/elsoleclipsado/start-view.fxml")
+                getClass().getResource("/com/example/elsoleclipsado/fxml/start-view.fxml")
         );
         Parent root = loader.load();
         StartController startController = loader.getController();

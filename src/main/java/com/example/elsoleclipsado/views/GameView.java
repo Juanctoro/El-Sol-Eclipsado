@@ -14,7 +14,7 @@ public class GameView extends Stage {
 
     private GameView() throws IOException {
         FXMLLoader loader = new FXMLLoader(
-                getClass().getResource("/com/example/elsoleclipsado/game-view.fxml")
+                getClass().getResource("/com/example/elsoleclipsado/fxml/game-view.fxml")
         );
         Parent root = loader.load();
         this.gameController = loader.getController();
