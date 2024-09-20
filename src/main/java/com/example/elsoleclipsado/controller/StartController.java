@@ -11,13 +11,26 @@ import java.io.IOException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * Controlador de la ventana de inicio del juego 'El Sol Eclipsado'.
+ * Permite ingresar la palabra secreta y muestra las instrucciones del juego.
+ * @author Juan Toro
+ */
 public class StartController {
+
     @FXML
     private Button buttonPlay;
 
     @FXML
     private TextField textFieldSecretWord;
 
+    /**
+     * Inicia el juego si la palabra ingresada es válida. La palabra debe
+     * tener entre 6 y 12 caracteres y solo contener letras.
+     * Cierra la ventana actual (el Start) y muestra la ventana principal del juego.
+     *
+     * @throws IOException si ocurre un error al cargar la vista del juego.
+     */
     @FXML
     public void start() throws IOException {
         String text = textFieldSecretWord.getText();
@@ -39,6 +52,13 @@ public class StartController {
         }
     }
 
+    /**
+     * Verifica si la palabra ingresada es válida. La palabra debe contener
+     * solo letras, incluyendo letras con acentos y la letra 'ñ'.
+     *
+     * @param palabra La palabra que se va a verificar.
+     * @return true si la palabra es válida, false en caso de que no sea valida.
+     */
     public boolean verifyValidWord(String palabra) {
         String regex = "^[a-zA-ZáéíóúÁÉÍÓÚñÑ]+$";
         Pattern pattern = Pattern.compile(regex);
@@ -46,6 +66,9 @@ public class StartController {
         return matcher.matches();
     }
 
+    /**
+     * Muestra un alert box con las instrucciones del juego.
+     */
     public void instructions() {
         Alert alert = new Alert(AlertType.INFORMATION);
         alert.setTitle("Instrucciones");
