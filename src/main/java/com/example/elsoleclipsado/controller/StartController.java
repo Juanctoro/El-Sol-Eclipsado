@@ -34,7 +34,7 @@ public class StartController {
     @FXML
     public void start() throws IOException {
         String text = textFieldSecretWord.getText();
-        if (verifyValidWord(text) && text.length() >= 6 && text.length() <= 12) {
+        if (verifyValidWord(text) && text.length() <= 5) {
             Stage currentStage = (Stage) buttonPlay.getScene().getWindow();
             if (currentStage != null) {
                 currentStage.close();
